@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0d12">
+<meta name="description" content="Trace is a Windows screen-drawing overlay for annotations, highlights, and presentations.">
+<title>Trace — Draw on your screen</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0d12;--panel:#141925;--text:#f5f7fb;--muted:#a5adbd;--line:rgba(255,255,255,.1);--gold:#f3bd55;--green:#a8e6c1;--max:1100px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,rgba(243,189,85,.13),transparent 42%),var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:21px;letter-spacing:-1px}.logo{width:36px;height:36px;border:1px solid #735b2e;border-radius:12px;display:grid;place-items:center;color:var(--gold);background:#171a21;font-size:23px}.links{display:flex;align-items:center;gap:25px;color:var(--muted);font-size:14px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--line);border-radius:12px;font-size:14px;font-weight:750;transition:.18s}.btn:hover{transform:translateY(-2px)}.gold{background:var(--gold);color:#17120a;border-color:var(--gold)}.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px;padding:75px 0 80px}.eyebrow,.kicker{color:var(--gold);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:850}.eyebrow:before{content:"";display:inline-block;width:7px;height:7px;background:var(--gold);border-radius:50%;margin-right:9px}h1{font-size:clamp(45px,6vw,76px);line-height:1.02;letter-spacing:-.065em;margin:18px 0}.gradient{background:linear-gradient(100deg,#fff,#f3bd55);color:transparent;background-clip:text}.lead{font-size:18px;color:var(--muted);max-width:550px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.fine{font-size:12px;color:#818b9c;margin-top:17px}.checks{display:flex;gap:16px;flex-wrap:wrap;color:#929bad;font-size:12px;margin-top:24px}.checks span:before{content:"✓";color:var(--green);margin-right:6px}
+.preview{position:relative;padding:12px;border:1px solid #343846;border-radius:24px;background:linear-gradient(145deg,#242936,#10131a);box-shadow:0 30px 90px #0008;transform:rotate(1deg)}.screen{position:relative;min-height:350px;border-radius:15px;background:linear-gradient(140deg,#1e2837,#11151d);padding:17px;overflow:hidden}.bar{display:flex;gap:6px;align-items:center;border-bottom:1px solid #ffffff13;padding-bottom:16px;color:#8f9bad;font-size:11px}.bar i{width:7px;height:7px;background:#687386;border-radius:50%}.bar span{margin-left:7px}.mock{display:grid;grid-template-columns:1fr 80px;gap:14px;padding-top:22px}.lines{display:grid;gap:11px;align-content:start}.line{height:8px;border-radius:10px;background:#ffffff12}.line.mid{width:70%}.line.short{width:45%}.fakecard{height:115px;border:1px solid #ffffff16;border-radius:12px;margin-top:8px}.tools{display:grid;gap:8px;align-content:start}.tool{border:1px solid #ffffff18;border-radius:9px;padding:7px 3px;text-align:center;color:#aeb7c7;font-size:11px}.tool.active{color:var(--gold);border-color:#a47c36;background:#f3bd5510}.scribble{position:absolute;inset:95px 22px 25px;pointer-events:none}.scribble svg{width:100%;height:100%}.tag{position:absolute;bottom:25px;right:-12px;background:#1a202b;border:1px solid #735b2e;border-radius:12px;padding:10px 14px;font-size:12px;box-shadow:0 12px 35px #0008}.tag b{color:var(--gold)}
+section{padding:70px 0}.head{text-align:center;max-width:650px;margin:0 auto 35px}.head h2,.how h2,.cta h2{font-size:clamp(30px,4vw,44px);line-height:1.12;letter-spacing:-.045em;margin:10px 0}.head p,.muted{color:var(--muted)}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{padding:24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#ffffff0a,#ffffff03)}.ico{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#f3bd5512;border:1px solid #f3bd5528;color:var(--gold);font-size:21px}.feature h3{font-size:17px;margin:16px 0 6px}.feature p{font-size:14px;color:var(--muted);margin:0}.how{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center}.how p{color:var(--muted)}.steps{display:grid;gap:12px}.step{display:flex;gap:14px;padding:17px;border:1px solid var(--line);border-radius:15px;background:#ffffff05}.num{flex:0 0 32px;height:32px;border-radius:10px;background:#f3bd5518;color:var(--gold);display:grid;place-items:center;font-weight:800}.step h3{font-size:15px;margin:0}.step p{font-size:13px;margin:3px 0 0}.pricebox{max-width:680px;margin:auto;border:1px solid #8c6c36;border-radius:24px;padding:30px;background:radial-gradient(ellipse at 100% 0%,#f3bd5515,transparent 45%),var(--panel)}.pricehead{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.price{font-size:48px;line-height:1.2;font-weight:850;letter-spacing:-.06em}.price small{font-size:13px;color:var(--muted);letter-spacing:0;font-weight:500}.pill{font-size:11px;border:1px solid #8c6c36;border-radius:30px;padding:5px 10px;color:#ffe1a0}.included{list-style:none;padding:20px 0;margin:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px}.included li:before{content:"✓";color:var(--green);margin-right:8px}.notice{display:none;color:#ffe1a0;background:#f3bd5510;border:1px solid #8c6c36;border-radius:10px;padding:12px;margin-top:12px;font-size:12px}.notice.show{display:block}.faq{max-width:800px;margin:auto;display:grid;gap:10px}details{padding:17px 19px;border:1px solid var(--line);border-radius:14px;background:#ffffff04}summary{cursor:pointer;font-weight:750;font-size:14px}details p{font-size:14px;color:var(--muted);margin-bottom:0}.cta{text-align:center;padding:45px 22px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(ellipse at 50% 0%,#f3bd5515,transparent 65%),var(--panel)}.cta p{max-width:520px;margin:0 auto 22px;color:var(--muted)}footer{border-top:1px solid var(--line);padding:25px 0;color:#818b9c;font-size:12px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footlinks{display:flex;gap:18px;flex-wrap:wrap}
+@media(max-width:820px){.hero{grid-template-columns:1fr;gap:35px;padding:45px 0}.hero-copy{text-align:center}.lead{margin:auto}.actions,.checks{justify-content:center}.preview{max-width:600px;width:100%;margin:auto}.features{grid-template-columns:repeat(2,1fr)}.how{grid-template-columns:1fr;gap:20px}.how-copy{text-align:center}}
+@media(max-width:560px){.wrap{width:calc(100% - 28px)}nav{padding:15px 0}.links{gap:12px;font-size:12px}.hide{display:none}.btn{padding:10px 13px}.hero{padding-top:40px}h1{font-size:47px}.lead{font-size:16px}section{padding:52px 0}.features{grid-template-columns:1fr}.screen{min-height:300px;padding:13px}.mock{grid-template-columns:1fr 72px;gap:9px}.pricebox{padding:22px}.price{font-size:40px}.included{grid-template-columns:1fr}.price-actions .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap">
+<nav>
+<a class="brand" href="#top"><span class="logo">⌁</span> Trace</a>
+<div class="links"><a class="hide" href="#features">Features</a><a class="hide" href="#how">How it works</a><a href="#pricing">Pricing</a><a class="btn" href="#pricing">Get Trace</a></div>
+</nav>
+</header>
+<main id="top">
+<div class="wrap hero">
+<div class="hero-copy">
+<div class="eyebrow">A better way to point things out</div>
+<h1>Draw on your screen.<br><span class="gradient">Make your point.</span></h1>
+<p class="lead">Trace is a lightweight Windows overlay that lets you draw, mark, and highlight anything on your screen — without interrupting what you're doing.</p>
+<div class="actions"><a class="btn gold" href="#pricing">Get Trace ↗</a><a class="btn" href="#features">Explore features ↓</a></div>
+<p class="fine">Designed for Windows 10 and Windows 11 · Made for presentations, tutorials, and everyday use</p>
+<div class="checks"><span>Quick annotations</span><span>Custom drawing</span><span>Simple controls</span></div>
+</div>
+<div class="preview" aria-label="Illustrative Trace interface preview"><div class="screen">
+<div class="bar"><i></i><i></i><i></i><span>Trace · Drawing overlay</span></div>
+<div class="mock"><div class="lines"><div class="line mid"></div><div class="line"></div><div class="line short"></div><div class="fakecard"></div><div class="line mid"></div><div class="line short"></div></div><div class="tools"><div class="tool active">✎ Draw</div><div class="tool">◉ Colour</div><div class="tool">↶ Undo</div><div class="tool">⌫ Clear</div></div></div>
+<div class="scribble"><svg viewBox="0 0 420 260" preserveAspectRatio="none"><path d="M22 152 C68 112 86 199 129 153 S194 93 226 142 S286 201 327 128 S367 101 394 76" fill="none" stroke="#f3bd55" stroke-width="9" opacity=".17" stroke-linecap="round"/><path d="M22 152 C68 112 86 199 129 153 S194 93 226 142 S286 201 327 128 S367 101 394 76" fill="none" stroke="#f3bd55" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+</div><div class="tag"><b>Trace</b> · Your screen, annotated</div></div>
+</div>
+<section id="features"><div class="wrap"><div class="head"><div class="kicker">Built to stay out of your way</div><h2>Everything you need to highlight the moment.</h2><p>Useful tools, fast controls, and a drawing overlay designed to feel natural on your desktop.</p></div>
+<div class="features">
+<article class="feature"><div class="ico">✎</div><h3>Draw anywhere</h3><p>Mark up what's on your screen to explain an idea, point to a detail, or guide someone's attention.</p></article>
+<article class="feature"><div class="ico">◌</div><h3>Fade away naturally</h3><p>Set strokes to fade after a chosen duration, helping keep your screen clear as you continue.</p></article>
+<article class="feature"><div class="ico">✧</div><h3>Make it yours</h3><p>Customise drawing colour, brush size, glow, and fade duration to suit your setup.</p></article>
+<article class="feature"><div class="ico">↶</div><h3>Undo and redo</h3><p>Correct a stroke or bring it back using keyboard shortcuts, without hunting through menus.</p></article>
+<article class="feature"><div class="ico">⌘</div><h3>Quick controls</h3><p>Use configurable shortcuts and a system-tray workflow to get to your tools quickly.</p></article>
+<article class="feature"><div class="ico">▣</div><h3>Multi-monitor setup</h3><p>Designed for Windows desktops with more than one screen, so your workflow can stay flexible.</p></article>
+</div></div></section>
+<section id="how"><div class="wrap how"><div class="how-copy"><div class="kicker">Simple by design</div><h2>From thought to highlight in seconds.</h2><p>Trace is made for the moments when pointing at something isn't enough. Activate the overlay, draw your mark, and get back to what you were doing.</p><p class="fine">Exact controls and supported features may vary by release. Check the release notes for the version you download.</p></div>
+<div class="steps"><div class="step"><div class="num">1</div><div><h3>Open Trace</h3><p>Launch the app and keep it available from your desktop or system tray.</p></div></div><div class="step"><div class="num">2</div><div><h3>Activate drawing</h3><p>Use your configured activation shortcut to start annotating your screen.</p></div></div><div class="step"><div class="num">3</div><div><h3>Draw, adjust, and continue</h3><p>Choose your look, undo mistakes, and let fading marks clear space for the next idea.</p></div></div></div></div></section>
+<section id="pricing"><div class="wrap"><div class="head"><div class="kicker">Straightforward pricing</div><h2>One simple purchase.</h2><p>No confusing tiers. Get Trace and use the features included in the version you purchase.</p></div>
+<div class="pricebox"><div class="pricehead"><div><div class="muted" style="font-size:13px">Trace for Windows</div><div class="price">A$4.99 <small>/ one-time</small></div></div><span class="pill">Planned launch price</span></div><p class="muted">A small utility for clearer explanations, presentations, and screen walkthroughs.</p>
+<ul class="included"><li>Screen drawing overlay</li><li>Custom drawing settings</li><li>Configurable shortcuts</li><li>Undo and redo controls</li><li>Fade and glow options</li><li>Windows desktop workflow</li></ul>
+<div class="actions price-actions"><a class="btn gold" href="#purchase" id="buy-button">Purchase Trace ↗</a><a class="btn" href="#faq">Read the FAQ</a></div><div class="notice" id="purchase-notice" role="status">Checkout is not connected yet. Add your real Lemon Squeezy checkout URL to the PURCHASE_URL constant in index.html.</div><p class="fine">Pricing and availability are planned and may change before launch. The purchase button will be connected once your store product is ready.</p></div></div></section>
+<section id="faq"><div class="wrap"><div class="head"><div class="kicker">Good to know</div><h2>Frequently asked questions</h2></div><div class="faq">
+<details><summary>What is Trace?</summary><p>Trace is a Windows screen-drawing overlay for making annotations and highlighting details on top of your screen.</p></details>
+<details><summary>Which versions of Windows are supported?</summary><p>Trace is being developed for Windows 10 and Windows 11. Check the requirements listed with the release you download.</p></details>
+<details><summary>How do I get the app?</summary><p>The purchase and download links will be added here after the store and release are ready.</p></details>
+<details><summary>How do I get help?</summary><p>Replace the support email in the footer with an email address you control before publishing.</p></details>
+<details><summary>Does Trace collect personal information?</summary><p>This page itself does not include analytics or advertising trackers. Before selling the app, publish a privacy policy that accurately describes what the app collects and how it works.</p></details>
+</div></div></section>
+<section><div class="wrap cta"><div class="kicker">Your screen. Your explanation.</div><h2>Make the details stand out.</h2><p>Trace helps you point things out, explain ideas, and keep your screen annotations under control.</p><a class="btn gold" href="#pricing">Explore Trace ↑</a></div></section>
+</main>
+<footer><div class="wrap foot"><div>© <span id="year"></span> Trace. All rights reserved.</div><div class="footlinks"><a href="mailto:REPLACE-WITH-YOUR-SUPPORT-EMAIL">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="#top">Back to top ↑</a></div></div></footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+// Paste your real Lemon Squeezy checkout URL here after your store product is ready.
+const PURCHASE_URL = "";
+document.getElementById("buy-button").addEventListener("click", function(event) {
+  if (!PURCHASE_URL) {
+    event.preventDefault();
+    document.getElementById("purchase-notice").classList.add("show");
+  } else {
+    event.preventDefault();
+    window.location.href = PURCHASE_URL;
+  }
+});
+</script>
+</body></html>
